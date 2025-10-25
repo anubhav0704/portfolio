@@ -88,16 +88,50 @@
             <p>I am an Aspiring Computer Science Engineer currently pursuing my Bachelor's degree at Lovely Professional University. I have a deep passion for technology, particularly in the fields of Artificial Intelligence and Machine Learning, and I enjoy applying my problem-solving skills to build practical and efficient software solutions.</p>
             <p>My academic foundation is built on core computer science subjects, including Data Structures, Algorithms, Operating Systems, and OOPS. Beyond the classroom, I am proactive in the tech community, where I have experience leading student tech initiatives and managing hackathons & bootcamps. These roles have sharpened my technical and leadership skills, preparing me for a dynamic professional environment.</p>
         </div>
+        
         <div class="card hidden">
             <h3>Technical Skills</h3>
-            <ul>
-                <li><strong>Programming Languages:</strong> C, C++, Python, Java</li>
-                <li><strong>Frontend Development:</strong> HTML, CSS, JavaScript</li>
-                <li><strong>ML/Data Tools:</strong> NumPy, Pandas, scikit-learn, Random Forest, XGBoost, Matplotlib</li>
-                <li><strong>Core CS Concepts:</strong> Data Structures & Algorithms, OOP</li>
-            </ul>
+    
+            <div class="skills-category">
+                <strong>Programming Languages:</strong>
+                <div class="skills-container">
+                    <span class="skill-badge">C</span>
+                    <span class="skill-badge">C++</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">Java</span>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <strong>Frontend Development:</strong>
+                <div class="skills-container">
+                    <span class="skill-badge">HTML</span>
+                    <span class="skill-badge">CSS</span>
+                    <span class="skill-badge">JavaScript</span>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <strong>ML/Data Tools:</strong>
+                <div class="skills-container">
+                    <span class="skill-badge">NumPy</span>
+                    <span class="skill-badge">Pandas</span>
+                    <span class="skill-badge">scikit-learn</span>
+                    <span class="skill-badge">Random Forest</span>
+                    <span class="skill-badge">XGBoost</span>
+                    <span class="skill-badge">Matplotlib</span>
+                </div>
+            </div>
+        
+            <div class="skills-category">
+                <strong>Core CS Concepts:</strong>
+                <div class="skills-container">
+                    <span class="skill-badge">Data Structures & Algorithms</span>
+                    <span class="skill-badge">OOP</span>
+                </div>
+            </div>
         </div>
-    </section>
+        </section>
 
     <section id="achievements" class="container">
         <h2 class="hidden">Achievements & Certifications</h2>
@@ -185,6 +219,23 @@
                 heroSection.style.setProperty('--mouse-y', `${y}px`);
             });
         }
+        
+        // --- (NEW) INTERACTIVE CARD GLOW EFFECT ---
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+            // Reset position when mouse leaves
+            card.addEventListener('mouseleave', () => {
+                 card.style.setProperty('--mouse-x', '50%');
+                 card.style.setProperty('--mouse-y', '50%');
+            });
+        });
+
 
         // --- FADE-IN ANIMATIONS ON SCROLL ---
         const observer = new IntersectionObserver((entries) => {
