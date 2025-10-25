@@ -1,16 +1,15 @@
 /* --- Google Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-/* --- NEW THEME: Teal & Gold --- */
+/* --- NEW THEME: Cyber Glow --- */
 :root {
-    --accent-start: #ffc107; /* Bright Gold */
-    --accent-end: #ffca28;   /* Lighter Gold */
-    --dark-bg: #004d40;     /* Deep Teal (for Hero & Footer) */
-    --light-bg: #f5f5f5;     /* Light Grey (for Body) */
-    --text-light: #ffffff;   /* White Text (on dark) */
-    --text-dark: #212121;    /* Dark Text (on light) */
-    --nav-bg: #ffffff;
-    --card-bg: #ffffff;
+    --accent-start: #00c6ff; /* Bright Cyan */
+    --accent-end: #0072ff;   /* Electric Blue */
+    --dark-bg: #0d1117;     /* GitHub Dark-Mode Black */
+    --light-bg: #161b22;     /* GitHub Dark-Mode Grey */
+    --text-light: #c9d1d9;   /* Light Text */
+    --text-dark: #f0f6fc;    /* White Text */
+    --border-color: #30363d;
 }
 
 /* --- General Styles --- */
@@ -19,12 +18,12 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Switched to Poppins */
     margin: 0;
-    background-color: var(--light-bg); /* Light body background */
-    color: var(--text-dark); /* Dark text */
+    background-color: var(--dark-bg);
+    color: var(--text-light);
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.7; /* Increased line height */
     -webkit-font-smoothing: antialiased;
 }
 
@@ -61,19 +60,17 @@ h2 {
 }
 
 .navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.8); /* White glassmorphism */
+    background-color: rgba(22, 27, 34, 0.7); /* Darker glassmorphism */
     backdrop-filter: blur(12px);
     padding: 15px 40px;
-    border-bottom: 1px solid #e0e0e0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .nav-brand {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--dark-bg); /* Teal brand name */
-    background: none;
-    -webkit-text-fill-color: initial;
+    color: var(--text-dark);
 }
 
 .nav-links {
@@ -89,33 +86,28 @@ h2 {
 }
 
 .nav-links li a {
-    color: var(--text-dark); /* Dark text */
+    color: var(--text-light);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .nav-links li a:hover {
-    color: var(--dark-bg); /* Teal hover */
-    background: none;
-    -webkit-text-fill-color: initial;
+    color: var(--accent-start); /* Cyan hover */
 }
 
 .nav-links li a.button {
-    color: var(--dark-bg); /* Teal text */
-    border: 2px solid var(--dark-bg); /* Teal border */
+    color: var(--accent-start);
+    border: 2px solid var(--accent-start);
     border-radius: 50px;
     padding: 8px 20px;
     transition: all 0.3s ease;
-    -webkit-text-fill-color: var(--dark-bg);
-    background: transparent;
 }
 
 .nav-links li a.button:hover {
-    background: var(--dark-bg); /* Teal fill */
-    color: var(--text-light); /* White text */
-    -webkit-text-fill-color: var(--text-light);
-    border-color: var(--dark-bg);
+    background-color: var(--accent-start);
+    color: var(--dark-bg);
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
 }
 
 /* Hamburger menu icon */
@@ -135,7 +127,7 @@ h2 {
 .hamburger .bar {
     width: 100%;
     height: 3px;
-    background-color: var(--text-dark); /* Dark bars */
+    background-color: var(--text-light);
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 }
@@ -146,8 +138,8 @@ h2 {
 
 /* --- Hero Section --- */
 .hero {
-    background-color: var(--dark-bg); /* Teal background */
-    color: var(--text-light); /* Light text */
+    background-color: var(--dark-bg);
+    color: var(--text-light);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -167,16 +159,16 @@ h2 {
 .hero-title {
     font-size: 4.5rem;
     font-weight: 700;
-    color: var(--text-light);
+    /* Gradient text effect */
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin: 0;
 }
 
 .hero-subtitle {
     font-size: 1.8rem;
-    color: var(--accent-start); /* Gold subtitle */
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
+    color: var(--text-dark); /* Plain white for contrast */
     margin: 10px 0;
     font-weight: 500;
 }
@@ -201,33 +193,29 @@ h2 {
 }
 
 .social-links a:hover {
-    color: var(--accent-start); /* Gold hover */
+    color: var(--accent-start); /* Cyan hover */
     transform: translateY(-5px) scale(1.1);
-}
-
-#contact .social-links a {
-    color: var(--text-dark); /* Dark links in contact section */
 }
 
 /* --- Cards --- */
 .card {
-    background-color: var(--card-bg); /* White cards */
-    color: var(--text-dark); /* Dark text */
+    background-color: var(--light-bg); /* Dark grey card */
+    color: var(--text-light);
     border-radius: 16px;
     padding: 35px;
     margin-bottom: 30px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
 }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-color: var(--accent-start); /* Gold border on hover */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: var(--accent-start); /* Cyan border on hover */
 }
 
 .card h3 {
-    color: var(--dark-bg); /* Teal card headings */
+    color: var(--text-dark); /* White heading */
 }
 
 .card ul {
@@ -242,8 +230,8 @@ h2 {
 }
 
 .card li::before {
-    content: "•";
-    color: var(--accent-start); /* Gold bullet */
+    content: "▹"; /* Changed bullet */
+    color: var(--accent-start); /* Cyan bullet */
     position: absolute;
     left: 0;
     font-size: 1.2em;
@@ -256,28 +244,28 @@ h2 {
     display: inline-block;
     padding: 14px 32px;
     background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    color: var(--text-dark); /* Dark text on button */
+    color: var(--dark-bg); /* Dark text on button */
     text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
     border: none;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(255, 193, 7, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 198, 255, 0.3);
 }
 
 .button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 198, 255, 0.5); /* Brighter glow */
 }
 
 /* --- Footer --- */
 footer {
     text-align: center;
     padding: 25px;
-    background-color: var(--dark-bg); /* Teal footer */
-    color: var(--text-light); /* Light text */
+    background-color: var(--light-bg); /* Dark grey footer */
+    color: var(--text-light);
     margin-top: 80px;
-    border-top: 1px solid var(--dark-bg);
+    border-top: 1px solid var(--border-color);
 }
 
 /* --- JavaScript Effects Styles --- */
@@ -288,7 +276,7 @@ footer {
     top: var(--mouse-y, 50%);
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0) 70%); /* Gold spotlight */
+    background: radial-gradient(circle, rgba(0, 198, 255, 0.15) 0%, rgba(0, 198, 255, 0) 70%); /* Cyan spotlight */
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.2s ease-out;
@@ -328,7 +316,7 @@ footer {
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: rgba(255, 255, 255, 0.95); /* White mobile menu */
+        background-color: rgba(22, 27, 34, 0.95); /* Dark mobile menu */
         backdrop-filter: blur(15px);
         box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         padding: 20px 0;
@@ -356,7 +344,7 @@ footer {
     .nav-links li a {
         display: block;
         padding: 10px 0;
-        color: var(--text-dark); /* Dark text in mobile menu */
+        color: var(--text-light);
     }
 
     .nav-links li a.button {
