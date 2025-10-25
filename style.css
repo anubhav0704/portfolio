@@ -1,7 +1,7 @@
 /* --- Google Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-/* --- NEW THEME: Aura Glow --- */
+/* --- NEW THEME: Cyber Glow --- */
 :root {
     --accent-start: #00c6ff; /* Bright Cyan */
     --accent-end: #0072ff;   /* Electric Blue */
@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Changed to Poppins */
+    font-family: 'Inter', sans-serif;
     margin: 0;
     background-color: var(--dark-bg);
     color: var(--text-light);
@@ -110,6 +110,7 @@ h2 {
     box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
 }
 
+/* Hamburger menu icon */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -155,40 +156,6 @@ h2 {
     z-index: 2;
 }
 
-/* NEW: Animated Glow Orbs */
-.hero-glow-orb, .hero-glow-orb2 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--accent-start), transparent 60%);
-    opacity: 0.15;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: 1;
-}
-
-.hero-glow-orb {
-    top: -150px;
-    left: -150px;
-    animation: animate-orb 20s linear infinite alternate;
-}
-
-.hero-glow-orb2 {
-    bottom: -150px;
-    right: -150px;
-    background: radial-gradient(circle, var(--accent-end), transparent 60%);
-    animation: animate-orb2 25s linear infinite alternate;
-}
-
-@keyframes animate-orb {
-    from { transform: translate(0, 0) rotate(0deg); }
-    to { transform: translate(200px, 100px) rotate(180deg); }
-}
-@keyframes animate-orb2 {
-    from { transform: translate(0, 0) rotate(0deg); }
-    to { transform: translate(-200px, -100px) rotate(-180deg); }
-}
-
 .hero-title {
     font-size: 4.5rem;
     font-weight: 700;
@@ -211,6 +178,7 @@ h2 {
     margin: 20px auto 30px auto;
 }
 
+/* Social Media Links */
 .social-links {
     text-align: center;
     margin-top: 30px;
@@ -230,8 +198,8 @@ h2 {
 
 /* --- Cards (Glassmorphism) --- */
 .card {
-    background-color: rgba(22, 27, 34, 0.6); /* Semi-transparent */
-    backdrop-filter: blur(12px);
+    background-color: rgba(22, 27, 34, 0.7); /* Semi-transparent */
+    backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 35px;
     margin-bottom: 30px;
@@ -241,7 +209,7 @@ h2 {
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 25px rgba(0, 198, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     border-color: var(--accent-start);
 }
 
@@ -269,28 +237,6 @@ h2 {
     line-height: 1;
 }
 
-/* NEW: Skill Tags */
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.skill-tag {
-    background-color: rgba(48, 54, 61, 0.7);
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.9em;
-    font-weight: 500;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.skill-tag:hover {
-    color: var(--accent-start);
-    border-color: var(--accent-start);
-}
-
 /* --- Buttons --- */
 .button {
     display: inline-block;
@@ -307,7 +253,7 @@ h2 {
 
 .button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 30px rgba(0, 198, 255, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 198, 255, 0.5);
 }
 
 /* --- Footer --- */
@@ -320,26 +266,35 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-/* --- Scroll Animation Styles --- */
+/* --- JavaScript Effects Styles --- */
+.hero::before {
+    content: '';
+    position: absolute;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 198, 255, 0.15) 0%, rgba(0, 198, 255, 0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .hidden {
     opacity: 0;
-    filter: blur(5px);
-    transform: translateY(30px);
-    transition: all 1s ease-out;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .show {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0);
 }
 
-/* --- Responsive Styles --- */
+/* --- Responsive Styles (Mobile First) --- */
 @media (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-    
     .navbar {
         padding: 15px 20px;
     }
