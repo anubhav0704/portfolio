@@ -1,17 +1,20 @@
 /* --- Google Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* --- NEW THEME: Minimalist Corporate --- */
+/* --- NEW THEME: Modern Professional --- */
 :root {
-    --primary-color: #007bff; /* Professional Blue */
-    --primary-dark: #0056b3;  /* Darker Blue for hover */
-    --bg-light: #ffffff;      /* Pure White */
-    --bg-alt: #f8f9fa;        /* Light Grey for alternating sections */
-    --text-dark: #212529;     /* Dark Grey (softer than black) */
-    --text-light: #6c757d;    /* Medium Grey for subtitles */
-    --border-color: #dee2e6;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.1);
+    --accent-start: #00F2A9; /* Bright, modern mint/green */
+    --accent-end: #00C9FF;   /* Clean, professional cyan */
+    --accent-gradient: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    
+    --bg-dark: #0A0A10;        /* Deep, premium dark blue/black */
+    --bg-light: #1A1A22;      /* Slate/Steel color for cards */
+    --bg-alt: #0F0F16;        /* Subtle alt background */
+
+    --text-light: #E0E0E0;      /* Primary text, soft white */
+    --text-dark: #F5F5F5;       /* Headings, pure white */
+    --text-muted: #888899;      /* Subtitles, muted grey */
+    --border-color: #2A2A33;    /* Subtle border */
 }
 
 /* --- General Styles --- */
@@ -22,41 +25,41 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    font-size: 17px; /* Slightly smaller for a denser, professional feel */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-size: 18px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
 }
 
 section {
     scroll-margin-top: 80px;
-    /* Add padding to the section itself, not the container margin */
     padding: 80px 0;
 }
 
-/* (NEW) Alternating section backgrounds */
+/* Alternating section backgrounds for subtle depth */
 section:nth-of-type(even) {
     background-color: var(--bg-alt);
 }
 
 .container {
     max-width: 960px;
-    margin: 0 auto; /* Removed top/bottom margin */
+    margin: 0 auto;
     padding: 0 20px;
 }
 
 h2 {
     text-align: center;
     margin-bottom: 50px;
-    font-size: 2.5rem; /* Slightly smaller */
+    font-size: 2.8rem;
     font-weight: 700;
     color: var(--text-dark);
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
+    color: var(--text-dark);
 }
 
 /* --- Navbar Styles --- */
@@ -69,19 +72,20 @@ h3 {
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
     box-sizing: border-box;
-    background-color: var(--bg-light); /* Always light */
-    border-bottom: 1px solid var(--border-color);
+    /* (NEW) Modern semi-transparent navbar */
+    background-color: rgba(10, 10, 16, 0.8); /* Semi-transparent dark */
+    backdrop-filter: blur(10px);
 }
 
 .navbar.scrolled {
     padding: 15px 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-brand {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-dark);
 }
@@ -106,7 +110,7 @@ h3 {
 }
 
 .nav-links li a:hover {
-    color: var(--primary-color);
+    color: var(--accent-start);
 }
 
 /* Hamburger menu icon */
@@ -137,16 +141,16 @@ h3 {
 
 /* --- Hero Section --- */
 .hero {
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    min-height: 90vh; /* Reduced height slightly */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 100px 20px 40px 20px;
     box-sizing: border-box;
-    /* (REMOVED) Spotlight effect */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .hero-content {
@@ -155,16 +159,18 @@ h3 {
 }
 
 .hero-title {
-    font-size: 3.5rem; /* Smaller, more professional */
+    font-size: 4rem;
     font-weight: 700;
-    color: var(--text-dark);
+    /* (NEW) Modern gradient title */
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin: 0;
-    /* (REMOVED) Gradient text */
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--primary-color); /* Use accent color here */
+    font-size: 1.6rem;
+    color: var(--text-light); /* Softer than bright white */
     margin: 10px 0;
     font-weight: 500;
 }
@@ -173,7 +179,7 @@ h3 {
     font-size: 1.1rem;
     max-width: 600px;
     margin: 20px auto 30px auto;
-    color: var(--text-light); /* Lighter text for description */
+    color: var(--text-muted); /* Muted for description */
 }
 
 /* Social Media Links */
@@ -183,18 +189,18 @@ h3 {
 }
 
 .social-links a {
-    color: var(--text-light);
-    font-size: 1.6rem;
+    color: var(--text-muted);
+    font-size: 1.8rem;
     margin: 0 15px;
     transition: color 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
-    color: var(--primary-color);
+    color: var(--accent-start);
     transform: translateY(-3px);
 }
 
-/* --- (NEW) Project Grid Layout --- */
+/* --- Project Grid Layout --- */
 section#projects .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -204,25 +210,27 @@ section#projects .container {
 
 /* --- (UPDATED) Cards --- */
 .card {
-    background-color: var(--bg-light); /* Solid white */
-    border-radius: 8px; /* Sharper corners */
+    background-color: var(--bg-light); /* Slate color */
+    border-radius: 12px;
     padding: 30px;
     margin-bottom: 0; /* Handled by grid gap */
     border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
-    /* (REMOVED) Glassmorphism and glow effect */
+    box-shadow: none; /* Flatter, more modern */
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--primary-color);
+    border-color: var(--accent-start); /* Simple, clean hover */
 }
 
 .card h3 {
     color: var(--text-dark);
     margin-top: 0;
+}
+
+.card p {
+    color: var(--text-light);
 }
 
 .card ul {
@@ -238,7 +246,7 @@ section#projects .container {
 
 .card li::before {
     content: "▹";
-    color: var(--primary-color);
+    color: var(--accent-start);
     position: absolute;
     left: 0;
     font-size: 1.2em;
@@ -269,8 +277,8 @@ section#projects .container {
 
 .skill-badge {
     display: inline-block;
-    background-color: var(--bg-alt);
-    color: var(--text-dark);
+    background-color: #252530; /* Lighter than card */
+    color: var(--text-light);
     padding: 5px 12px;
     border-radius: 6px;
     font-size: 0.9rem;
@@ -280,57 +288,52 @@ section#projects .container {
 }
 
 .skill-badge:hover {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
+    color: var(--text-dark);
+    border-color: var(--accent-start);
 }
 
 
 /* --- (UPDATED) Button Hierarchy --- */
 
-/* 1. Primary Button (Solid) */
+/* 1. Primary Button (Solid Gradient) */
 .button {
     display: inline-block;
     padding: 12px 28px;
-    background: var(--primary-color);
-    color: var(--bg-light);
+    background: var(--accent-gradient);
+    color: #000; /* Black text for high contrast on gradient */
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
-    border: 2px solid var(--primary-color);
+    border: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 242, 169, 0.2); /* Subtle glow */
     cursor: pointer;
 }
 
 .button:hover {
-    background: var(--primary-dark);
-    border-color: var(--primary-dark);
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 242, 169, 0.3);
 }
 
 /* 2. Secondary Button (Outline) - for projects */
 .button.button-outline {
     background: transparent;
-    color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--border-color);
     box-shadow: none;
 }
 
 .button.button-outline:hover {
-    background: var(--primary-color);
-    color: var(--bg-light);
-    box-shadow: none; /* No shadow on outline button hover */
+    background: var(--accent-start);
+    color: #000;
+    border-color: var(--accent-start);
+    box-shadow: 0 4px 15px rgba(0, 242, 169, 0.2);
+    transform: translateY(-3px); /* Match scale */
 }
 
-/* 3. Navbar Button (Tweak primary style) */
+/* 3. Navbar Button */
 .nav-links li a.button {
     padding: 8px 20px;
-    box-shadow: none;
-}
-
-.nav-links li a.button:hover {
-    box-shadow: none;
 }
 
 
@@ -338,13 +341,11 @@ section#projects .container {
 footer {
     text-align: center;
     padding: 30px;
-    background-color: var(--text-dark); /* Dark footer */
-    color: var(--bg-alt);
+    background-color: var(--bg-alt);
+    color: var(--text-muted);
     margin-top: 60px;
-    border-top: none;
+    border-top: 1px solid var(--border-color);
 }
-
-/* --- (REMOVED) JavaScript Glow/Spotlight Effects --- */
 
 /* --- Fade-in Animation (Keep) --- */
 .hidden {
@@ -358,7 +359,7 @@ footer {
     transform: translateY(0);
 }
 
-/* --- Responsive Styles (Mobile First) --- */
+/* --- Responsive Styles --- */
 @media (max-width: 768px) {
     /* Reset project grid to single column */
     section#projects .container {
@@ -372,6 +373,7 @@ footer {
 
     .navbar {
         padding: 15px 20px;
+        background-color: rgba(10, 10, 16, 0.9); /* More opaque on mobile */
     }
 
     .navbar.scrolled {
@@ -379,7 +381,7 @@ footer {
     }
 
     .nav-brand {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     .nav-links {
@@ -389,8 +391,8 @@ footer {
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: var(--bg-light);
-        box-shadow: var(--shadow);
+        background-color: var(--bg-light); /* Solid card color */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         padding: 20px 0;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
@@ -417,10 +419,10 @@ footer {
     .nav-links li a {
         display: block;
         padding: 10px 0;
-        color: var(--text-dark);
+        color: var(--text-light);
     }
     .nav-links li a:hover {
-        color: var(--primary-color);
+        color: var(--accent-start);
     }
     .nav-links li a.button {
         display: inline-block;
@@ -432,7 +434,7 @@ footer {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     .hero-subtitle {
@@ -444,16 +446,12 @@ footer {
         min-height: 80vh;
     }
 
-    .container {
-        margin: 0 auto;
-    }
-    
     section {
         padding: 60px 0;
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-bottom: 30px;
     }
 
