@@ -1,25 +1,17 @@
 /* --- Google Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* --- (NEW) Animations --- */
-@keyframes pulse-shadow {
-  0%, 100% {
-    box-shadow: 0 5px 20px rgba(0, 198, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 8px 30px rgba(0, 120, 255, 0.5); /* Pulse to the other accent color */
-  }
-}
-
-/* --- NEW THEME: Cyber Glow --- */
+/* --- NEW THEME: Minimalist Corporate --- */
 :root {
-    --accent-start: #00c6ff; /* Bright Cyan */
-    --accent-end: #0072ff;   /* Electric Blue */
-    --dark-bg: #0d1117;     /* GitHub Dark-Mode Black */
-    --light-bg: #161b22;     /* GitHub Dark-Mode Grey */
-    --text-light: #c9d1d9;   /* Light Text */
-    --text-dark: #f0f6fc;    /* White Text */
-    --border-color: #30363d;
+    --primary-color: #007bff; /* Professional Blue */
+    --primary-dark: #0056b3;  /* Darker Blue for hover */
+    --bg-light: #ffffff;      /* Pure White */
+    --bg-alt: #f8f9fa;        /* Light Grey for alternating sections */
+    --text-dark: #212529;     /* Dark Grey (softer than black) */
+    --text-light: #6c757d;    /* Medium Grey for subtitles */
+    --border-color: #dee2e6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* --- General Styles --- */
@@ -30,32 +22,44 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-    font-size: 18px;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-size: 17px; /* Slightly smaller for a denser, professional feel */
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
 }
 
 section {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 80px;
+    /* Add padding to the section itself, not the container margin */
+    padding: 80px 0;
+}
+
+/* (NEW) Alternating section backgrounds */
+section:nth-of-type(even) {
+    background-color: var(--bg-alt);
 }
 
 .container {
     max-width: 960px;
-    margin: 80px auto;
+    margin: 0 auto; /* Removed top/bottom margin */
     padding: 0 20px;
 }
 
 h2 {
     text-align: center;
     margin-bottom: 50px;
-    font-size: 2.8rem;
+    font-size: 2.5rem; /* Slightly smaller */
     font-weight: 700;
     color: var(--text-dark);
 }
 
-/* --- Navbar & Hamburger Menu Styles --- */
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* --- Navbar Styles --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -65,20 +69,19 @@ h2 {
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
     box-sizing: border-box;
+    background-color: var(--bg-light); /* Always light */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .navbar.scrolled {
-    background-color: rgba(22, 27, 34, 0.7);
-    backdrop-filter: blur(12px);
     padding: 15px 40px;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .nav-brand {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--text-dark);
 }
@@ -103,26 +106,7 @@ h2 {
 }
 
 .nav-links li a:hover {
-    color: var(--accent-start);
-}
-
-/* --- (UPDATED) Primary Resume Button --- */
-.nav-links li a.button {
-    color: var(--accent-start);
-    border: 2px solid var(--accent-start);
-    border-radius: 50px;
-    padding: 8px 20px;
-    transition: all 0.3s ease;
-    /* (NEW) Apply pulse animation */
-    animation: pulse-shadow 3s ease-in-out infinite;
-}
-
-.nav-links li a.button:hover {
-    background-color: var(--accent-start);
-    color: var(--dark-bg);
-    box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
-    /* (NEW) Stop animation on hover */
-    animation: none;
+    color: var(--primary-color);
 }
 
 /* Hamburger menu icon */
@@ -142,7 +126,7 @@ h2 {
 .hamburger .bar {
     width: 100%;
     height: 3px;
-    background-color: var(--text-light);
+    background-color: var(--text-dark);
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 }
@@ -153,17 +137,16 @@ h2 {
 
 /* --- Hero Section --- */
 .hero {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-    min-height: 100vh;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    min-height: 90vh; /* Reduced height slightly */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 100px 20px 40px 20px;
-    position: relative;
-    overflow: hidden;
     box-sizing: border-box;
+    /* (REMOVED) Spotlight effect */
 }
 
 .hero-content {
@@ -172,17 +155,16 @@ h2 {
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: 3.5rem; /* Smaller, more professional */
     font-weight: 700;
-    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-dark);
     margin: 0;
+    /* (REMOVED) Gradient text */
 }
 
 .hero-subtitle {
-    font-size: 1.8rem;
-    color: var(--text-dark);
+    font-size: 1.5rem;
+    color: var(--primary-color); /* Use accent color here */
     margin: 10px 0;
     font-weight: 500;
 }
@@ -191,6 +173,7 @@ h2 {
     font-size: 1.1rem;
     max-width: 600px;
     margin: 20px auto 30px auto;
+    color: var(--text-light); /* Lighter text for description */
 }
 
 /* Social Media Links */
@@ -201,80 +184,45 @@ h2 {
 
 .social-links a {
     color: var(--text-light);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin: 0 15px;
     transition: color 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
-    color: var(--accent-start);
-    transform: translateY(-5px) scale(1.1);
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 /* --- (NEW) Project Grid Layout --- */
-section#projects.container {
+section#projects .container {
     display: grid;
-    /* Create responsive columns: min 300px wide, max 1fr */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px; /* Spacing between cards */
 }
 
 
-/* --- (UPDATED) Cards (Glassmorphism) --- */
+/* --- (UPDATED) Cards --- */
 .card {
-    background-color: rgba(22, 27, 34, 0.7); /* Semi-transparent */
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 35px;
-    /* margin-bottom: 30px; */ /* (REMOVED) Replaced by grid gap */
-    margin-bottom: 0; /* Set to 0 */
+    background-color: var(--bg-light); /* Solid white */
+    border-radius: 8px; /* Sharper corners */
+    padding: 30px;
+    margin-bottom: 0; /* Handled by grid gap */
     border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
-    
-    /* (NEW) Needed for glow effect */
-    position: relative;
-    overflow: hidden;
+    /* (REMOVED) Glassmorphism and glow effect */
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: var(--accent-start);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
 }
-
-/* (NEW) Card Glow Effect */
-.card::before {
-    content: '';
-    position: absolute;
-    left: var(--mouse-x, 50%);
-    top: var(--mouse-y, 50%);
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, 
-        rgba(0, 198, 255, 0.1) 0%, /* Subtle cyan glow */
-        rgba(0, 198, 255, 0) 70%  /* Fades to transparent */
-    );
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.4s ease-out;
-    pointer-events: none;
-    opacity: 0; /* Hidden by default */
-    z-index: 0;
-}
-
-.card:hover::before {
-    opacity: 1; /* Show the glow on hover */
-}
-
-/* (NEW) Ensure card content stays above the glow */
-.card > * {
-    position: relative;
-    z-index: 1;
-}
-
 
 .card h3 {
     color: var(--text-dark);
+    margin-top: 0;
 }
 
 .card ul {
@@ -290,14 +238,14 @@ section#projects.container {
 
 .card li::before {
     content: "▹";
-    color: var(--accent-start);
+    color: var(--primary-color);
     position: absolute;
     left: 0;
     font-size: 1.2em;
     line-height: 1;
 }
 
-/* --- (NEW) Skill Badge Styles --- */
+/* --- (UPDATED) Skill Badge Styles --- */
 .skills-category {
     margin-bottom: 20px;
 }
@@ -306,10 +254,11 @@ section#projects.container {
 }
 
 .skills-category strong {
-    color: var(--text-dark); /* Make the category title stand out */
-    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-size: 1rem;
     margin-bottom: 10px;
     display: block;
+    font-weight: 600;
 }
 
 .skills-container {
@@ -320,10 +269,10 @@ section#projects.container {
 
 .skill-badge {
     display: inline-block;
-    background-color: var(--light-bg); /* Use the lighter dark shade */
-    color: var(--text-light);
-    padding: 6px 14px;
-    border-radius: 20px;
+    background-color: var(--bg-alt);
+    color: var(--text-dark);
+    padding: 5px 12px;
+    border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 500;
     border: 1px solid var(--border-color);
@@ -331,77 +280,73 @@ section#projects.container {
 }
 
 .skill-badge:hover {
-    color: var(--text-dark);
-    border-color: var(--accent-start);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 198, 255, 0.2);
 }
 
 
-/* --- General Button --- */
+/* --- (UPDATED) Button Hierarchy --- */
+
+/* 1. Primary Button (Solid) */
 .button {
     display: inline-block;
-    padding: 14px 32px;
-    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    color: var(--dark-bg);
+    padding: 12px 28px;
+    background: var(--primary-color);
+    color: var(--bg-light);
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
-    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 198, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    cursor: pointer;
 }
 
 .button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 198, 255, 0.5);
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+    transform: translateY(-2px);
 }
 
-/* --- (NEW) Secondary 'Ghost' Button Style for Projects --- */
-#projects .card .button {
+/* 2. Secondary Button (Outline) - for projects */
+.button.button-outline {
     background: transparent;
-    border: 2px solid var(--border-color); /* Use the subtle border color */
-    color: var(--text-light);
+    color: var(--primary-color);
     box-shadow: none;
-    padding: 10px 24px;
-    animation: none; /* Remove pulse animation */
 }
 
-#projects .card .button:hover {
-    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
-    color: var(--dark-bg);
-    border-color: var(--accent-start); /* Light up the border */
-    box-shadow: 0 5px 20px rgba(0, 198, 255, 0.3);
-    transform: translateY(-3px) scale(1.05); /* Keep the nice hover */
+.button.button-outline:hover {
+    background: var(--primary-color);
+    color: var(--bg-light);
+    box-shadow: none; /* No shadow on outline button hover */
+}
+
+/* 3. Navbar Button (Tweak primary style) */
+.nav-links li a.button {
+    padding: 8px 20px;
+    box-shadow: none;
+}
+
+.nav-links li a.button:hover {
+    box-shadow: none;
 }
 
 
 /* --- Footer --- */
 footer {
     text-align: center;
-    padding: 25px;
-    background-color: var(--light-bg);
-    color: var(--text-light);
-    margin-top: 80px;
-    border-top: 1px solid var(--border-color);
+    padding: 30px;
+    background-color: var(--text-dark); /* Dark footer */
+    color: var(--bg-alt);
+    margin-top: 60px;
+    border-top: none;
 }
 
-/* --- JavaScript Effects Styles --- */
-.hero::before {
-    content: '';
-    position: absolute;
-    left: var(--mouse-x, 50%);
-    top: var(--mouse-y, 50%);
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(0, 198, 255, 0.15) 0%, rgba(0, 198, 255, 0) 70%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.2s ease-out;
-    pointer-events: none;
-    z-index: 1;
-}
+/* --- (REMOVED) JavaScript Glow/Spotlight Effects --- */
 
+/* --- Fade-in Animation (Keep) --- */
 .hidden {
     opacity: 0;
     transform: translateY(20px);
@@ -415,12 +360,12 @@ footer {
 
 /* --- Responsive Styles (Mobile First) --- */
 @media (max-width: 768px) {
-    /* (NEW) Reset project grid to single column on mobile */
-    section#projects.container {
+    /* Reset project grid to single column */
+    section#projects .container {
         display: block;
     }
     
-    /* (NEW) Add margin back to cards only on mobile */
+    /* Add margin back to cards only on mobile */
     .card {
         margin-bottom: 30px;
     }
@@ -430,11 +375,11 @@ footer {
     }
 
     .navbar.scrolled {
-        padding: 10px 20px;
+        padding: 15px 20px;
     }
 
     .nav-brand {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .nav-links {
@@ -442,14 +387,14 @@ footer {
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 100%; /* (FIX) Was 100%, which is correct */
+        top: 100%;
         left: 0;
-        background-color: rgba(22, 27, 34, 0.95);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        background-color: var(--bg-light);
+        box-shadow: var(--shadow);
         padding: 20px 0;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-top: 1px solid var(--border-color);
         transition: all 0.3s ease-in-out;
         transform: translateY(-10px);
         opacity: 0;
@@ -472,14 +417,14 @@ footer {
     .nav-links li a {
         display: block;
         padding: 10px 0;
-        color: var(--text-light);
+        color: var(--text-dark);
     }
-
+    .nav-links li a:hover {
+        color: var(--primary-color);
+    }
     .nav-links li a.button {
         display: inline-block;
         margin-top: 10px;
-        /* (NEW) Stop pulse animation on mobile navbar */
-        animation: none;
     }
 
     .hamburger {
@@ -500,7 +445,11 @@ footer {
     }
 
     .container {
-        margin: 50px auto;
+        margin: 0 auto;
+    }
+    
+    section {
+        padding: 60px 0;
     }
 
     h2 {
